@@ -17,7 +17,7 @@
 
 const Discord = require('discord.js');
 const { extname, join, relative, sep } = require('path');
-const { isClass } = require('../utils');
+const { isClass } = require('../../utils');
 const fs = require('fs-nextra');
 
 class SetupClient extends Discord.Client {
