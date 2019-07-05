@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "main": "src/index.js",
   "repository": "https://github.com/officialpiyush/sever-setup-bot.git",
-  "license": "GNUv3",
+  "license": "GPLv3",
   "devDependencies": {
     "eslint": "^6.0.1",
     "eslint-config-aqua": "^6.0.0"
