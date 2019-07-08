@@ -1,4 +1,4 @@
-// Copyright (C) 2019 <upcoming_org>
+// Copyright (C) 2019 developer-hole
 //
 // This file is part of Server Setup.
 //
@@ -54,6 +54,9 @@ class SetupClient extends Discord.Client {
 		this.commands = new Discord.Collection();
 		this.aliases = new Discord.Collection();
 
+		// Events
+		this.events = new Discord.Collection();
+
 		// Database huh.
 		this.database = {
 			name:
@@ -69,16 +72,35 @@ class SetupClient extends Discord.Client {
 		this.init();
 	}
 
-	async load(directory, file) {
+	async loadEvent(directory, file) {
+		const loc = join(directory, ...file);
+		try {
+			const e = require(loc);
+			if (!isClass(e)) {
+				throw new TypeError(
+					`[Event Load Error] At ${loc} - Exported file is not a class.`
+				);
+			}
+			const event = new e(this, file);
+			this.events.set(event.name, event);
+			event.once
+				? super.once(event.name, (...args) => event.run(...args))
+				: super.on(event.name, (...args) => event.run(...args));
+		} catch (error) {
+			console.error(error);
+		}
+	}
+
+	async loadCommand(directory, file) {
 		const loc = join(directory, ...file);
 		try {
 			const c = require(loc);
 			if (!isClass(c)) {
 				throw new TypeError(
-					`[Load Error] At ${loc} - Exported file is not a class.`
+					`[Command Load Error] At ${loc} - Exported file is not a class.`
 				);
 			}
-			const command = new c();
+			const command = new c(this, file);
 			this.commands.set(c.split('.')[0], command);
 			command.aliases.foreach(a => this.aliases.set(a, command));
 		} catch (error) {
@@ -86,12 +108,12 @@ class SetupClient extends Discord.Client {
 		}
 	}
 
-	async init() {
-		this.load_commands();
-		this.load_events();
+	init() {
+		this.loadCommands();
+		this.loadEvents();
 	}
 
-	async load_commands() {
+	async loadCommands() {
 		const files = await fs
 			.scan(this.commandsDir, {
 				filter: (stats, path) => stats.isFile() && extname(path) === '.js'
@@ -106,7 +128,7 @@ class SetupClient extends Discord.Client {
 		);
 	}
 
-	async load_events() {
+	async loadEvents() {
 		const files = await fs
 			.scan(this.eventsDir, {
 				filter: (stats, path) => stats.isFile() && extname(path) === '.js'
