@@ -1,8 +1,8 @@
 {
-  "name": "sever-setup-bot",
+  "name": "tesseract",
   "version": "0.1.0",
   "main": "src/index.js",
-  "repository": "https://github.com/officialpiyush/sever-setup-bot.git",
+  "repository": "https://github.com/developer-hole/Tesseract.git",
   "license": "GPLv3",
   "devDependencies": {
     "eslint": "^6.0.1",
