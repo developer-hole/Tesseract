@@ -20,7 +20,7 @@ const { extname, join, relative, sep } = require('path');
 const { isClass } = require('../../utils');
 const fs = require('fs-nextra');
 
-class SetupClient extends Discord.Client {
+class TesseractClient extends Discord.Client {
 	/**
 	 * @typedef DatabaseOptions
 	 * @property {string} [uri="mongodb://localhost:27017/"] MongoDB URI.
@@ -144,4 +144,4 @@ class SetupClient extends Discord.Client {
 	}
 }
 
-module.exports = SetupClient;
+module.exports = TesseractClient;
