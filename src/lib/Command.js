@@ -19,10 +19,10 @@ class Command {
 	constructor(client, file, args = {}) {
 		this.name = args.name || file[-1].replace('.js', '');
 		this.usage = args.usage || '';
-		this.description = args.info || '';
+		this.description = args.description || '';
 		this.extendedHelp = args.extendedHelp || '';
 		this.aliases = args.aliases || [];
-		this.enabled = args.disablity || true;
+		this.enabled = args.enabled || true;
 		this.category = args.category || 'general';
 	}
 
