@@ -16,14 +16,14 @@
 // along with Tesseract.  If not, see <http://www.gnu.org/licenses/>.
 
 class Command {
-	constructor(client, file, args = {}) {
-		this.name = args.name || file[-1].replace('.js', '');
-		this.usage = args.usage || '';
-		this.description = args.description || '';
-		this.extendedHelp = args.extendedHelp || '';
-		this.aliases = args.aliases || [];
-		this.enabled = args.enabled || true;
-		this.category = args.category || 'general';
+	constructor(client, file, options = {}) {
+		this.name = options.name || file[-1].replace('.js', '');
+		this.usage = options.usage || '';
+		this.description = options.description || '';
+		this.extendedHelp = options.extendedHelp || '';
+		this.aliases = options.aliases || [];
+		this.enabled = options.enabled || true;
+		this.category = options.category || 'general';
 	}
 
 	get isCmd() {
