@@ -24,6 +24,11 @@ class Command {
 		this.aliases = options.aliases || [];
 		this.enabled = options.enabled || true;
 		this.category = options.category || 'general';
+		this.userPerms = options.userPerms || [];
+		this.botPerms = ['SEND_MESSAGES', 'READ_MESSAGE_HISTORY'];
+		typeof options.botPerms == Array
+			? options.botPerms.array.forEach(p => this.botPerms.push(p))
+			: null;
 	}
 
 	get isCmd() {

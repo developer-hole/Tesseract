@@ -15,7 +15,9 @@
 // You should have received a copy of the GNU General Public License
 // along with Tesseract.  If not, see <http://www.gnu.org/licenses/>.
 
-module.exports = class Util {
+const TOTITLECASE = /[A-Za-zÀ-ÖØ-öø-ÿ]\S*/g;
+
+class Util {
 	static isClass(input) {
 		return (
 			typeof input === 'function' &&
@@ -23,4 +25,22 @@ module.exports = class Util {
 			input.toString().substring(0, 5) === 'class'
 		);
 	}
+
+	static toTitleCase(str) {
+		return str.replace(
+			TOTITLECASE,
+			txt =>
+				Util.titleCaseVariants[txt] ||
+				txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
+		);
+	}
+}
+
+Util.titleCaseVariants = {
+	textchannel: 'TextChannel',
+	voicechannel: 'VoiceChannel',
+	categorychannel: 'CategoryChannel',
+	guildmember: 'GuildMember'
 };
+
+module.exports = Util;
