@@ -32,6 +32,8 @@ class TesseractClient extends Discord.Client {
 	 * @property {DatabaseOptions} database Options for database.
 	 * @property {string} commandsDir The directory of commands.
 	 * @property {string} eventsDir The directory of events.
+	 * @property {string} prefix The prefix of the bot.
+	 * @property {string[]} owners The owners of the bot.
 	 */
 
 	/**
@@ -69,6 +71,11 @@ class TesseractClient extends Discord.Client {
 					: 'mongodb://localhost:27017/'
 		};
 
+		// stuff
+		this.prefix = options.prefix;
+		this.owners = options.owners;
+
+		// OP
 		this.init();
 	}
 
@@ -82,6 +89,7 @@ class TesseractClient extends Discord.Client {
 				);
 			}
 			const event = new e(this, file);
+			console.log(event.name);
 			this.events.set(event.name, event);
 			event.once
 				? super.once(event.name, (...args) => event.run(...args))
@@ -139,8 +147,12 @@ class TesseractClient extends Discord.Client {
 
 		return Promise.all(
 			[...files.keys()].map(file =>
-				this.load(__dirname, relative(__dirname, file).split(sep)))
+				this.loadEvent(__dirname, relative(__dirname, file).split(sep)))
 		);
+	}
+
+	login(token) {
+		return super.login(token);
 	}
 }
 
