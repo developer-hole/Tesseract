@@ -110,7 +110,7 @@ class TesseractClient extends Discord.Client {
 			}
 			const command = new c(this, file);
 			this.commands.set(c.split('.')[0], command);
-			command.aliases.foreach(a => this.aliases.set(a, command));
+			command.aliases.forEach(a => this.aliases.set(a, command));
 		} catch (error) {
 			console.error(error);
 		}
