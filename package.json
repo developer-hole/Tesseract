@@ -4,7 +4,6 @@
   "main": "src/index.js",
   "repository": "https://github.com/developer-hole/Tesseract.git",
   "license": "GPLv3",
-  "types": "index.d.ts",
   "devDependencies": {
     "eslint": "6.1.0",
     "eslint-config-aqua": "6.0.1"
