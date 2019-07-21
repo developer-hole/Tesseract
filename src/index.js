@@ -1,8 +1,10 @@
-const TesseractClient = require('./lib/structures/core/TesseractClient');
+const command = require('./lib/structures/Event');
 
-new TesseractClient({
-	prefix: '-',
-	eventsDir: './events',
-	commandsDir: './commands',
-	owners: []
-}).login('TOKEN');
+class test extends command {
+    constructor(...args) {
+        super(...args, {
+            name: '',
+            once: 
+        })
+    }
+}
