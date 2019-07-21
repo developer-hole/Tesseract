@@ -1,3 +1,6 @@
 {
-    "extends": "aqua/node"
+    "extends": "aqua/node",
+    "rules": {
+        "linebreak-style":"off"
+    }
 }
