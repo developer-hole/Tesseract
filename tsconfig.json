@@ -1,0 +1,24 @@
+{
+	"compilerOptions": {
+		"alwaysStrict": true,
+		"declaration": true,
+		"forceConsistentCasingInFileNames"	: true,
+		"lib": ["esnext"],
+		"module": "commonjs",
+		"moduleResolution": "node",
+        "newLine": "LF",
+		"noImplicitReturns": true,
+		"noImplicitThis": true,
+        "noUnusedParameters": false,
+		"outDir": "./dist",
+		"removeComments": true,
+		"resolveJsonModule": true,
+		"strictBindCallApply": true,
+        "target": "esnext",
+        "types": ["@types/node", "@types/ws", "discord.js"]
+	},
+	"exclude": [ "node_modules", "testing" ],
+	"include": [
+		"./src/**/*"
+	]
+}
