@@ -36,7 +36,7 @@ declare module 'tesseract' {
 
         private _run(param: any): void;
         private _runOnce(...args: any[]): Promise<void>;
-        private _listern(): void;
+        private _listener(): void;
         private _unlisten(): void;
     }
 
