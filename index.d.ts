@@ -22,7 +22,7 @@ declare module 'tesseract' {
 
     export class Command {
         public constructor(client: TesseractClient, file: string[], options?: CommandOptions);
-        public run(arg: string | undefined, message: Message): any;
+        public run(arg: string | undefined, message: Message): Promise<void>;
     }
 
     export  class Event {
