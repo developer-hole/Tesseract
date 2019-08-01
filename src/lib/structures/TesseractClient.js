@@ -132,7 +132,7 @@ class TesseractClient extends Discord.Client {
 
 		return Promise.all(
 			[...files.keys()].map(file =>
-				this.load(__dirname, relative(__dirname, file).split(sep)))
+				this.loadCommand(__dirname, relative(__dirname, file).split(sep)))
 		);
 	}
 
