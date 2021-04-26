@@ -6,7 +6,7 @@
   "license": "GPLv3",
   "devDependencies": {
     "eslint": "6.5.1",
-    "eslint-config-aqua": "7.0.1"
+    "eslint-config-aqua": "8.1.2"
   },
   "dependencies": {
     "discord.js": "discordjs/discord.js",
